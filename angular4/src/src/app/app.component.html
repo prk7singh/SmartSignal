@@ -1,0 +1,63 @@
+<div style="width:80%;margin: auto;">
+<h4>Smart Traffic Management</h4>
+<form class="form-horizontal">
+  <div class="form-group" *ngFor="let request of requesttypedata;let i = index">
+    <label class="control-label col-sm-2" style="text-align:left;" for="days">Day {{i+1}}</label>
+    <div class="col-sm-10">
+      <input type="days" class="form-control" id="days{i}" name="days{i}" placeholder="Day {{i+1}}" [(ngModel)]="cars">
+    </div>
+  </div>
+  <div class="form-group"> 
+    <div class="col-sm-offset-2 col-sm-2">
+      <button type="button" class="btn btn-default" (click)="addMore();">Add</button>
+    </div>
+    <div class="col-sm-4">
+      <input type="file" name="file" id="file" accept=".csv" (change)="filesGet();">
+    </div>
+    <div class="col-sm-4">
+        <button type="button" class="btn btn-default" (click)="addFiles();" [disabled]="!(csvfiles && csvfiles.length>0)">Add Files</button>
+        <button type="button" class="btn btn-default" (click)="updateTimerFromServer();">Update Times</button>
+    </div>
+  </div>
+</form>
+<!-- <button (click)="moveH()">Move H</button>
+<button (click)="moveV()">Move V</button> -->
+<!-- background-image: url("paper.gif"); -->
+<div id="canvas">
+    <div style="width:100%;height:600px;overflow:hidden;">
+        <div id="vertical" class="pull-left" style='height:100%;width:150px;background-image:url("./assets/images/imagesv.jpg");background-size: 150px 150px;'>
+          <!-- <div class="light veritical-top green"></div> -->
+          <div class="light veritical-bottom text-center" [ngClass]="{'green':verticalLight==0,'red':verticalLight>0}"><span class="timer">{{horizonalLight || verticalLight}}</span></div>
+          <i class="fa fa-ambulance vcv" style="-webkit-transform: rotate(90deg);" [style.color]="vehicle.color" [style.left]="vehicle.left+'px'" [style.top]="vehicle.top+'px'" id="vch2" aria-hidden="true" *ngFor="let vehicle of vVer"></i>
+        </div>
+        <div id="horizontal" style='position: relative;top: calc(50% - 75px);height: 150px;background-image:url("./assets/images/images.jpg");background-size: 150px 150px;margin-left:150px;'>
+          <div class="light horizontal text-center" [ngClass]="{'green':horizonalLight==0,'red':horizonalLight>0}">
+             <span class="timer">{{horizonalLight || verticalLight}}</span> 
+            <!-- <i class="fa fa-bicycle vch" id="vch1" aria-hidden="true"></i> -->
+            
+          </div>
+          <i class="fa fa-ambulance vch" [style.color]="vehicle.color" [style.left]="vehicle.left+'px'" [style.top]="vehicle.top+'px'" id="vch2" aria-hidden="true" *ngFor="let vehicle of vHor"></i>
+        </div>
+      </div>
+</div>
+<div id="table">
+    <table class="table table-bordered table-condensed">
+        <thead>
+          <tr>
+            <th>Light A</th>
+            <th>Light B</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of predictions">
+            <td>{{item.lightA}}</td>
+            <td>{{item.lightB}}</td>
+            <td>{{item.date}}</td>
+          </tr>
+          
+        </tbody>
+      </table>
+</div>
+
+</div>

@@ -1,0 +1,44 @@
+.light{
+	position: relative;
+	border-radius: 40px;
+	height: 80px;
+	width: 80px;
+}
+.horizontal{
+	left:0px;
+	top:35px;
+}
+.veritical-top{
+	top:calc(50% - 120px);
+}
+.veritical-bottom{
+	top:calc(50% + 40px);
+	left:35px;
+}
+.light.green{
+	background-color: rgba(0,255,0,0.2);
+}
+.light.red{
+	background-color: rgba(255,0,0,0.2);
+}
+.light.yellow{
+	background-color: rgba(248, 252, 9, 0.2);
+}
+.vch{
+	font-size: 40px;
+	position: absolute;
+	z-index: 5000;
+	width:40px;
+}
+.vcv{
+	font-size: 40px;
+	width:40px;
+	position: absolute;
+	z-index: 5000;
+}
+.timer{
+	color: white;
+	font-size: 30px;
+	position: relative;
+	top:calc(50% - 20px);
+}
